@@ -71,6 +71,21 @@ const alterationList = [
   //   description: '"+<value> Strength"'
   // }
 ];
+//need to check to make sure user doesn't exceed attribute list. if(attributeList > attributeCounter) notify user they have exceeded
+let attributeList = [
+  "oneAttribute",
+  "twoAttribute",
+  "threeAttribute",
+  "fourAttribute",
+  "fiveAttribute",
+  "sixAttribute",
+  "sevenAttribute",
+  "eightAttribute",
+  "nineAttribute",
+  "tenAttribute"
+];
+//count from negative 1 to be in sync with attributeList array
+let attributeCounter = -1;
 //generated lists
 iconList.forEach(options => {
   const opt = options;
@@ -86,21 +101,27 @@ btnCode.addEventListener("click", () => {
 });
 
 btnEnchantment.addEventListener("click", () => {
+  attributeCounter += 1;
+  // attributeList.push(attributeNum);
+
   const selectNode = document.createElement("SELECT");
   // const optionNode = document.createElement("OPTION");
-  selectNode.setAttribute("id", "alterationSelect");
+
   // selectNode.appendChild(optionNode);
   enchantmentParent.appendChild(selectNode);
 
   //put in here until better solution. -- not working - find better solution
   alterationList.forEach(options => {
+    selectNode.setAttribute("id", attributeList[attributeCounter]);
     const opt = options;
     const el = document.createElement("option");
     el.textContent = opt;
     el.value = opt;
-    alterationSelect.appendChild(el);
+    eval(attributeList[attributeCounter]).appendChild(el);
   });
 });
+
+const createAttributeName = name2 => {};
 
 assembleCode = () => {
   generatedCode.innerText = `[t:template,n:${
