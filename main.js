@@ -63,9 +63,9 @@ const iconList = ["b_gui_ig_i_it_ring_034"];
 const btnEnchantment = document.getElementById("btnEnchantment");
 const enchantmentParent = document.getElementById("enchantmentParent");
 const alterationList = [
-  "test1",
-  "test2",
-  "test3"
+  "Strength",
+  "Health",
+  "Mana"
   // {
   //   alteration: "alter_strength",
   //   description: '"+<value> Strength"'
@@ -119,6 +119,15 @@ btnEnchantment.addEventListener("click", () => {
     el.value = opt;
     eval(attributeList[attributeCounter]).appendChild(el);
   });
+  //refractor later
+  //add label
+  const attachLabel = document.getElementById(attributeList[attributeCounter]);
+  let label = document.createElement("label");
+  label.textContent = "Value";
+  //create label
+  attachLabel.after(label);
+  let input = document.createElement("input");
+  label.after(input);
 });
 
 const createAttributeName = name2 => {};
